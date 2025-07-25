@@ -3,6 +3,8 @@ package com.bloggery.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -20,9 +22,18 @@ public class Users {
     @Column(name = "password_hash", nullable = false)
     private String password;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "role_id")
     private Roles roleId;
+
+    @OneToMany(mappedBy = "userId")
+    private List<Posts> postIDs;
+
+    @OneToMany(mappedBy = "userId")
+    private List<Comments> commentIDs;
+
+    @OneToMany(mappedBy = "userId")
+    private List<Reactions> reactionIDs;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -36,6 +47,30 @@ public class Users {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public List<Posts> getPostIDs() {
+        return postIDs;
+    }
+
+    public void setPostIDs(List<Posts> postIDs) {
+        this.postIDs = postIDs;
+    }
+
+    public List<Comments> getCommentIDs() {
+        return commentIDs;
+    }
+
+    public void setCommentIDs(List<Comments> commentIDs) {
+        this.commentIDs = commentIDs;
+    }
+
+    public List<Reactions> getReactionIDs() {
+        return reactionIDs;
+    }
+
+    public void setReactionIDs(List<Reactions> reactionIDs) {
+        this.reactionIDs = reactionIDs;
     }
 
     public int getId() {
@@ -94,6 +129,13 @@ public class Users {
     @PreUpdate
     public void setUpdatedAt() {
         this.updatedAt = LocalDateTime.now();
+    }
+
+    public void addPostToUser(Posts post){
+        if(postIDs == null){
+            postIDs = new ArrayList<>();
+        }
+        postIDs.add(post);
     }
 
     @Override
