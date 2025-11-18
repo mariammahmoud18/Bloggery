@@ -3,6 +3,7 @@ package com.bloggery.services;
 import com.bloggery.entities.Reactions;
 import com.bloggery.entities.Users;
 import com.bloggery.repositories.reactionsRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 public class reactionsService {
     reactionsRepo repo;
 
+    @Autowired
     public reactionsService(reactionsRepo repo){
         this.repo = repo;
     }

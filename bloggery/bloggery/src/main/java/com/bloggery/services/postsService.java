@@ -3,7 +3,10 @@ package com.bloggery.services;
 import com.bloggery.entities.Posts;
 import com.bloggery.entities.Tags;
 import com.bloggery.repositories.postsRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.bloggery.entities.Users;
+
 
 import java.util.List;
 
@@ -11,6 +14,7 @@ import java.util.List;
 public class postsService {
     postsRepo repo;
 
+    @Autowired
     public postsService(postsRepo repo){
         this.repo = repo;
     }
@@ -39,7 +43,7 @@ public class postsService {
         repo.deleteById(id);
     }
 
-    public List<Posts> findPostsByUserId(int id){
+    public List<Posts> findPostsByUserId(Users id){
         return repo.findByUserId(id);
     }
 
@@ -47,8 +51,8 @@ public class postsService {
         return repo.findByState(state);
     }
 
-    public List<Posts> findPostsByTageId(Tags tag){
-        return repo.findByTagIds(tag);
+    public List<Posts> findPostsByTagIDs(Tags tag){
+        return repo.findByTagIDs(tag);
     }
 
 }

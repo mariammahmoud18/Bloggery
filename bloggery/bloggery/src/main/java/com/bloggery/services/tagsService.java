@@ -2,6 +2,7 @@ package com.bloggery.services;
 
 import com.bloggery.entities.Tags;
 import com.bloggery.repositories.tagsRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class tagsService {
     tagsRepo repo;
 
+    @Autowired
     public tagsService(tagsRepo tagsRepo){
         this.repo = tagsRepo;
     }

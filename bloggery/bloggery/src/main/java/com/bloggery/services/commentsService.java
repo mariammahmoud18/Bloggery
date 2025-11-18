@@ -2,6 +2,7 @@ package com.bloggery.services;
 
 import com.bloggery.entities.Comments;
 import com.bloggery.repositories.commentsRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class commentsService {
     commentsRepo repo;
 
+    @Autowired
     public commentsService(commentsRepo repo) {
         this.repo = repo;
     }

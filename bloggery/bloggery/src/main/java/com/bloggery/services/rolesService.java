@@ -2,6 +2,7 @@ package com.bloggery.services;
 
 import com.bloggery.entities.Roles;
 import com.bloggery.repositories.rolesRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class rolesService {
     rolesRepo repo;
 
+    @Autowired
     public rolesService(rolesRepo rolesRepo){
         this.repo = rolesRepo;
     }

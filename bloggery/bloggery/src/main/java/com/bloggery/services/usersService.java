@@ -2,6 +2,7 @@ package com.bloggery.services;
 
 import com.bloggery.entities.Users;
 import com.bloggery.repositories.usersRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class usersService {
     usersRepo repo;
 
+    @Autowired
     public usersService(usersRepo usersRepo){
         this.repo = usersRepo;
     }
